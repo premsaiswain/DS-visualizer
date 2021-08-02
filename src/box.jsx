@@ -56,8 +56,9 @@ function task(i) {
                         backgroundColor:work?"white":"",
                      }}
                      transition={{
-                       type:"twin",
-                       duration: 5
+                       type:"spring",
+                       stiffness:60,
+                       damping:90
                      }}
                       key={index}>{ele}</motion.div>   
                      })
@@ -75,7 +76,7 @@ function task(i) {
                 setWork(true);
                 setAns(false);
                 setitem(0);
-               }}>Reset</button>
+             }}>Reset</button>
             </div>
            
         </div>

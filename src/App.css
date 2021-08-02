@@ -40,6 +40,7 @@ outline: none;
    display: grid;
   grid-template-columns: 100px 100px 100px 100px; 
   grid-template-row: 100px;
+  box-shadow:7px 7px 7px 7px white;
 }
 .elements{
 width: 100px;
