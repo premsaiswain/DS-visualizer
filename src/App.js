@@ -1,7 +1,6 @@
-import logo from './logo.svg';
+
 import './App.css';
-import { motion } from "framer-motion"
-import Box from './box';
+import Box from './linear-search';
 function App() {
   return (
     <div className="App">

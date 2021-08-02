@@ -1,13 +1,17 @@
 import React from 'react'
 import { motion } from "framer-motion"
+
+
 function Box() {
-     const arrr=[1,2,3,4,5,6,7,8,9,10,11,12];
+    const arrr=[1,2,3,4,5,6,7,8,9,10,11,12];
     const [work,setWork] = React.useState(false);
     const [item,setitem] =React.useState(0);
     const [arr,setArr]=React.useState(arrr);
     const [ansbox,setAnsbox]=React.useState(0);
     const [ans,setAns]=React.useState(false);
     const [isFirstRun,setIsfirstrun]= React.useState(true)
+
+
     React.useEffect(()=>{
         if(isFirstRun){
             setIsfirstrun(false);
