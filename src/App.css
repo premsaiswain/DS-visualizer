@@ -33,9 +33,13 @@ outline: none;
   align-items: center;
   justify-content: center;
   margin-top: 2rem;
+}
+.ans_found{
   color: green;
 }
-
+.ans_notfound{
+  color: red;
+}
 .Array{
    display: grid;
   grid-template-columns: 100px 100px 100px 100px; 
