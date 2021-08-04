@@ -24,6 +24,7 @@ function Box() {
     const [ans,setAns]=useState(false);
     const [isFirstRun,setIsfirstrun]= useState(true)
     const [redgreen,setRedGreen] = useState(true);
+    const [linear_or_binary , setLb]=useState(true);
 
     React.useEffect(()=>{
         if(isFirstRun){
@@ -40,10 +41,14 @@ function Box() {
         },1000*ansbox) }
     },[ansbox])
     
- // linear search algo
+ // function to be exectued on click
+ 
     const finditem=()=>{
         setRedGreen(true);
-        for (let i=0; i<arr.length;i++) {
+        let val=0;
+        if(linear_or_binary){
+             //Linear search algo
+            for (let i=0; i<arr.length;i++) {
             if(arr[i] == item){
                 setRedGreen(false);
                 setAnsbox(i);
@@ -52,9 +57,40 @@ function Box() {
            task(i);
         setWork(false);
      
-         }
-     
-// a setTimeout function to make the loop slow to actually visulaize the colors  
+         } }
+         else{
+           //binary search algo
+        let start=0, end=arr.length-1;
+          
+    // Iterate while start not meets end
+      while (start<=end){
+        // Find the mid index
+        let mid=Math.floor((start + end)/2);
+        // If element is present at mid, return True
+        console.log(arr[mid]);
+        // console.log(item);
+        if (arr[mid]=== item){
+            console.log("I am found"); 
+            break;     
+        } 
+        // Else look in left or right half accordingly
+       else if (arr[mid] < item) 
+             start = mid + 1;
+        else
+             end = mid - 1;
+        btask(val++,mid);
+        setWork(false);     
+    }
+        }
+// a setTimeout function to make the binary search loop slow to visulaize the colors
+function btask(i,mid){
+    setTimeout(function () {
+        setWork(false);
+        const ele = document.getElementById(mid);
+        ele.style.backgroundColor = "red";
+    }, 1000 * i);
+}        
+// a setTimeout function to make the loop slow to visulaize the colors  
 function task(i) { 
   setTimeout(function(){
         setWork(false);
@@ -62,7 +98,7 @@ function task(i) {
         ele.style.backgroundColor="red";
         }, 1000 * i);
 }
-    }
+}
   //box-container is the main box in which the elements of the array are stored/displayed
   //Array is the box for the elements which gets repeated according to the elents in the array
     return (
@@ -95,6 +131,12 @@ function task(i) {
             <div className="search-tags">
                 <input type="number" value={item} className="input-tag" onChange={(e)=>setitem(e.target.value)}></input>
                 <button className="btn" onClick={()=> finditem()}>Search</button>
+            </div>
+            <div className="Selectors">
+               <label for="Linear">Linear-search</label>
+               <input type="radio" id="Linear" value="Linear-search" onChange={()=>setLb(true)} name="search" checked></input>
+               <label for="Binary">Binary-search</label>
+               <input type="radio" id="Binary" value="Binary-search" onChange={()=>setLb(false)} name="search"></input>
             </div>
             {/** button to reset the grids 
             // it basically just use the useState hooks to set the states to default

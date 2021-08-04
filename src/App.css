@@ -13,6 +13,16 @@ align-items: center;
 list-style-type: none;
 outline: none;
 }
+.Selectors{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
+}
+.Selectors input{
+  margin: 1.5rem;
+  color: blue;
+}
 .btn{
   background-color: blue;
   border-radius: 3px;
