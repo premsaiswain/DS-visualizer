@@ -25,11 +25,11 @@ function Box() {
     const [isFirstRun,setIsfirstrun]= useState(true)
     const [redgreen,setRedGreen] = useState(true);
     const [linear_or_binary , setLb]=useState(true);
-
+    const [trgr,setTrgr] = useState(0);
+ // Effects for Linear search
     React.useEffect(()=>{
         if(isFirstRun){
             setIsfirstrun(false);
-            console.log("HI")
             return;
         }
         else{
@@ -41,6 +41,23 @@ function Box() {
         },1000*ansbox) }
     },[ansbox])
     
+   //Effects for binary search
+       React.useEffect(()=>{
+             if(isFirstRun){
+                 setIsfirstrun(false);
+                 return;
+             }
+             else{
+                 setTimeout(()=>{
+                  setAns(true);
+                  console.log("i am on")
+                  const ans=document.getElementById(trgr);
+                  ans.style.backgroundColor="green"
+                 },1000 * trgr)
+             }  
+       },[trgr])
+
+
  // function to be exectued on click
  
     const finditem=()=>{
@@ -67,9 +84,8 @@ function Box() {
         // Find the mid index
         let mid=Math.floor((start + end)/2);
         // If element is present at mid, return True
-        console.log(arr[mid]);
-        // console.log(item);
-        if (arr[mid]=== item){
+        if (arr[mid]== item){
+            setTrgr(mid);
             console.log("I am found"); 
             break;     
         } 
@@ -82,8 +98,10 @@ function Box() {
         setWork(false);     
     }
         }
+     
+     
 // a setTimeout function to make the binary search loop slow to visulaize the colors
-function btask(i,mid){
+function btask(i,mid){  
     setTimeout(function () {
         setWork(false);
         const ele = document.getElementById(mid);
